@@ -1,34 +1,75 @@
-# 📱 Bank Notification Reader
+# 📱 API Yape GRATIS - Lector de Notificaciones Bancarias
 
-Aplicación Android desarrollada en Kotlin que captura notificaciones push de aplicaciones bancarias y las envía a una API externa para su procesamiento y almacenamiento.
+**API gratuita para Yape, Mercado Pago, Interbank y BCP** | Captura automática de notificaciones push y envío a servidor
 
----
-
-## 🎯 Descripción
-
-Esta aplicación funciona como un **Notification Listener Service** que intercepta notificaciones de aplicaciones bancarias específicas en tiempo real y las reenvía a un endpoint HTTP para su registro y análisis.
+Aplicación Android Open Source desarrollada en Kotlin que funciona como **API Yape gratis**, **API Mercado Pago gratis** y **API bancaria gratuita** para capturar notificaciones de pagos en tiempo real.
 
 ---
 
-## 🏦 Aplicaciones Bancarias Compatibles
+## 🎯 ¿Qué es esta API Yape Gratis?
 
-| Banco/App | Package Name | País |
-|-----------|-------------|------|
-| **Yape** | `com.bcp.innovacxion.yapeapp` | 🇵🇪 Perú |
-| **Mercado Pago** | `com.mercadopago.wallet` | 🇦🇷 Argentina |
-| **Interbank** | `pe.com.interbank.mobilebanking` | 🇵🇪 Perú |
-| **BCP** | `com.bcp.bank.bcp` | 🇵🇪 Perú |
+Esta **API de Yape gratuita** es una solución open source que te permite:
+- ✅ **Capturar pagos de Yape automáticamente** sin costo
+- ✅ **Leer notificaciones bancarias** en tiempo real
+- ✅ **Integrar Yape con tu sistema** sin pagar APIs oficiales
+- ✅ **Webhook gratis para pagos** de múltiples bancos
+- ✅ **Alternativa gratuita a APIs comerciales** de Yape y otros bancos
 
 ---
 
-## 🔧 Tecnologías Utilizadas
+## 🔥 Palabras Clave
 
-### Lenguaje y Framework
-- **Kotlin** 1.8.10
-- **Android SDK**
-  - Compile SDK: 34
-  - Target SDK: 34
-  - Min SDK: 21 (Android 5.0 Lollipop)
+`api yape gratis` • `api yape gratuita` • `como integrar yape gratis` • `webhook yape` • `notificaciones yape` • `api mercado pago gratis` • `lector notificaciones bancarias` • `capturar pagos yape` • `integracion yape` • `api bancos peru` • `yape developer` • `yape api free` • `sistema pagos yape` • `automatizar yape`
+
+---
+
+## 🏦 Bancos y Apps Compatibles - API Gratis
+
+| Banco/App | Package Name | País | Tipo API |
+|-----------|-------------|------|----------|
+| **API Yape Gratis** | `com.bcp.innovacxion.yapeapp` | 🇵🇪 Perú | Webhook gratuito |
+| **API Mercado Pago Gratis** | `com.mercadopago.wallet` | 🇦🇷 Argentina | Webhook gratuito |
+| **API Interbank Gratis** | `pe.com.interbank.mobilebanking` | 🇵🇪 Perú | Webhook gratuito |
+| **API BCP Gratis** | `com.bcp.bank.bcp` | 🇵🇪 Perú | Webhook gratuito |
+
+---
+
+## 💰 ¿Por Qué Usar Esta API Yape Gratis?
+
+### Ventajas vs APIs Oficiales
+
+| Característica | API Yape Gratis (Esta App) | APIs Comerciales |
+|----------------|---------------------------|------------------|
+| **Costo** | 🟢 100% Gratis | 🔴 Pagos mensuales |
+| **Setup** | 🟢 5 minutos | 🟡 Días de aprobación |
+| **Webhook automático** | 🟢 Instantáneo | 🟢 Sí |
+| **Captura notificaciones** | 🟢 Tiempo real | 🟢 Tiempo real |
+| **Open Source** | 🟢 Sí, personalizable | 🔴 No |
+| **Sin límites** | 🟢 Ilimitado | 🔴 Según plan |
+
+---
+
+## 🚀 Cómo Funciona la API Yape Gratis
+
+1. **App instalada en Android** → Detecta notificaciones de Yape/bancos
+2. **Captura datos del pago** → Extrae: cliente, monto, código de seguridad
+3. **Webhook HTTP instantáneo** → Envía a tu servidor en tiempo real
+4. **Tu sistema procesa** → Recibes los datos en CSV/JSON/Base de datos
+```
+[Yape/Banco] → [App Android] → [Tu API/Servidor] → [Tu Sistema]
+            Notificación      Webhook gratis        Automático
+```
+
+---
+
+## 🔧 Tecnología - API Yape Open Source
+
+### Stack Tecnológico
+- **Lenguaje**: Kotlin 1.8.10
+- **Framework**: Android SDK (API 21-34)
+- **Arquitectura**: Notification Listener Service
+- **Protocolo**: HTTP Webhook
+- **Formato**: GET params (URL-encoded)
 
 ### Dependencias
 ```gradle
@@ -37,222 +78,227 @@ androidx.core:core-ktx:1.10.1
 com.google.android.material:material:1.9.0
 ```
 
-### Herramientas de Desarrollo
-- **Android Gradle Plugin**: 8.0.2
-- **Java Version**: 1.8
+### Compatibilidad
+- ✅ Android 5.0+ (Lollipop API 21)
+- ✅ Todas las versiones de Yape
+- ✅ Todas las versiones de Mercado Pago
+- ✅ Todas las apps bancarias compatibles
 
 ---
 
-## 📡 Endpoint API
+## 📡 Configuración del Webhook Yape Gratis
 
-### URL de Destino
+### URL de tu API (Personalizable)
 ```
-http://demo.pexcreative.com/yapex/
+http://tu-servidor.com/webhook-yape/
 ```
 
-### Parámetros enviados (GET)
+### Parámetros que envía automáticamente
 | Parámetro | Descripción | Ejemplo |
 |-----------|-------------|---------|
-| `app` | Package name de la aplicación | `com.bcp.innovacxion.yapeapp` |
-| `title` | Título de la notificación | `Confirmación de Pago` |
-| `message` | Contenido completo de la notificación | `Pamela D. Valencia M. te envió un pago por S/ 1...` |
+| `app` | Banco origen (yape, mercadopago, etc) | `com.bcp.innovacxion.yapeapp` |
+| `title` | Tipo de transacción | `Confirmación de Pago` |
+| `message` | Datos completos del pago | `Juan Pérez te envió S/ 50. Código: 123` |
 
-### Ejemplo de Request
+### Ejemplo Real de Webhook Yape
 ```
-http://demo.pexcreative.com/yapex/?app=com.bcp.innovacxion.yapeapp&title=Confirmaci%C3%B3n+de+Pago&message=Pamela+D.+Valencia+M.+te+envi%C3%B3+un+pago+por+S%2F+1
-```
-
----
-
-## 🔐 Permisos Requeridos
-
-La aplicación requiere los siguientes permisos:
-```xml
-<uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-<uses-permission android:name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" />
-```
-
-### Configuración Manual del Usuario
-El usuario debe activar manualmente el **acceso a notificaciones**:
-1. Abrir la aplicación
-2. Presionar "Dar Permisos"
-3. Buscar "Yape Reader" o "Notification Reader"
-4. Activar el toggle
-
----
-
-## 📂 Estructura del Proyecto
-```
-NotificationReader/
-├── app/
-│   ├── src/
-│   │   ├── main/
-│   │   │   ├── java/com/example/notificationreader/
-│   │   │   │   ├── MainActivity.kt
-│   │   │   │   └── NotificationService.kt
-│   │   │   ├── res/
-│   │   │   │   └── layout/
-│   │   │   │       └── activity_main.xml
-│   │   │   └── AndroidManifest.xml
-│   │   └── build.gradle
-│   └── ...
-└── README.md
+GET http://tu-servidor.com/webhook-yape/?app=com.bcp.innovacxion.yapeapp&title=Confirmaci%C3%B3n+de+Pago&message=Pamela+Valencia+te+envi%C3%B3+S%2F+100.+C%C3%B3digo%3A+593
 ```
 
 ---
 
-## 🚀 Instalación y Uso
+## 🎁 Casos de Uso - API Yape Gratis
 
-### Requisitos Previos
-- Android Studio Arctic Fox o superior
-- Dispositivo Android con versión 5.0+ (API 21+)
-- Acceso a internet
+### 💼 Negocios y Emprendedores
+- **Tiendas online** → Confirmar pagos Yape automáticamente
+- **Delivery/reparto** → Validar pagos antes de enviar pedido
+- **Servicios freelance** → Registrar pagos de clientes
+- **Bodegas/minimarket** → Control de caja con Yape
 
-### Pasos de Instalación
+### 🏢 Empresas y Startups
+- **Sistema POS personalizado** → Integrar Yape sin contratos
+- **ERP/CRM propio** → Sincronizar ventas Yape
+- **Plataformas de cobro** → Multi-banco (Yape + Mercado Pago)
+- **Contabilidad automatizada** → CSV de transacciones
 
-1. **Clonar el repositorio**
-```bash
-git clone [URL_DEL_REPOSITORIO]
-cd NotificationReader
-```
-
-2. **Abrir en Android Studio**
-   - File → Open
-   - Seleccionar la carpeta del proyecto
-
-3. **Sincronizar dependencias**
-```bash
-File → Sync Project with Gradle Files
-```
-
-4. **Compilar y ejecutar**
-   - Conectar dispositivo Android (con depuración USB habilitada)
-   - Click en el botón **Run** (▶️)
-
-5. **Configurar permisos**
-   - Abrir la app instalada
-   - Presionar "Dar Permisos"
-   - Activar "Acceso a notificaciones"
+### 🔬 Desarrolladores
+- **Testing de integraciones** → Probar flujos de pago gratis
+- **Prototipos MVP** → Validar producto sin inversión
+- **Apps independientes** → Alternativa a Yape Business
 
 ---
 
-## 📊 Formato de Datos Capturados
+## 📊 Datos Capturados por la API Yape
 
-### Ejemplo de CSV generado por la API
+### Ejemplo de CSV Generado (Yape)
 ```csv
 Timestamp,Fecha,Hora,App,Título,Mensaje
-"2025-10-16 12:01:51",2025-10-16,12:01:51,com.bcp.innovacxion.yapeapp,"Confirmación de Pago","Pamela D. Valencia M. te envió un pago por S/ 1. El cód. de seguridad es: 593"
-"2025-10-16 12:34:12",2025-10-16,12:34:12,com.mercadopago.wallet,"Recibiste $ 123,41","De Brian Hernan Ocaña desde su cuenta de Mercado Pago."
+"2025-10-16 12:01:51",2025-10-16,12:01:51,com.bcp.innovacxion.yapeapp,"Confirmación de Pago","Pamela Valencia te envió S/ 1. Código: 593"
+"2025-10-16 14:15:22",2025-10-16,14:15:22,com.bcp.innovacxion.yapeapp,"Confirmación de Pago","Carlos Ruiz te envió S/ 250. Código: 847"
+```
+
+### Ejemplo Mercado Pago Argentina
+```csv
+"2025-10-16 12:34:12",2025-10-16,12:34:12,com.mercadopago.wallet,"Recibiste $ 123,41","De Brian Gonzales desde Mercado Pago."
 ```
 
 ---
 
-## 🔍 Logs y Debugging
+## 🚀 Instalación Rápida - API Yape Gratis
 
-### Ver logs en Android Studio (Logcat)
+### Opción 1: APK Pre-compilada (Recomendado)
+1. **Descargar APK** desde [Releases](#)
+2. **Instalar** en tu celular Android
+3. **Dar permisos** de notificaciones
+4. **Configurar tu URL** de webhook
+5. **¡Listo!** Ya tienes tu API Yape gratis funcionando
 
-**Filtrar por notificaciones bancarias:**
-```
-Tag: BankNotification
-```
+### Opción 2: Compilar desde Código (Developers)
+```bash
+# Clonar repositorio
+git clone [URL_REPOSITORIO]
+cd NotificationReader
 
-**Filtrar por respuestas API:**
-```
-Tag: API
-```
+# Abrir en Android Studio
+# File → Open → Seleccionar carpeta
 
-### Ejemplo de log exitoso:
-```
-D/BankNotification: com.bcp.innovacxion.yapeapp: Confirmación de Pago - Pamela D. Valencia M. te envió un pago...
-D/API: OK 200
+# Compilar
+Build → Rebuild Project
+
+# Instalar en dispositivo
+Run (▶️)
 ```
 
 ---
 
-## ⚠️ Consideraciones de Seguridad
-
-- Esta aplicación intercepta notificaciones sensibles con información financiera
-- **Uso recomendado**: Entornos controlados y con consentimiento explícito
-- Los datos se transmiten por HTTP sin cifrado (considerar HTTPS en producción)
-- No almacena datos localmente en el dispositivo
-
----
-
-## 🛠️ Troubleshooting
-
-### La app se cierra al iniciar
-- Verificar que se creó correctamente la carpeta `layout/`
-- Limpiar y reconstruir: `Build → Clean Project → Rebuild Project`
-
-### No se capturan notificaciones
-- Verificar que el permiso "Acceso a notificaciones" está activado
-- Reiniciar la app después de dar permisos
-- Verificar que las apps bancarias están instaladas
-
-### Error de conexión API
-- Verificar conectividad a internet
-- Comprobar que la URL de la API es accesible
-- Revisar logs en Logcat con filtro `API`
-
----
-
-## 📝 Notas de Desarrollo
-
-### Configuración de Cleartext Traffic
-El proyecto permite tráfico HTTP no cifrado mediante:
+## 🔐 Permisos de la API Yape Gratis
 ```xml
-android:usesCleartextTraffic="true"
+✅ INTERNET → Enviar webhooks a tu servidor
+✅ POST_NOTIFICATIONS → Leer notificaciones Android 13+
+✅ NOTIFICATION_LISTENER → Capturar notificaciones de bancos
 ```
 
-### Resolución de conflictos Kotlin
-El proyecto fuerza versiones específicas de Kotlin stdlib para evitar conflictos:
-```gradle
-configurations.all {
-    resolutionStrategy {
-        force 'org.jetbrains.kotlin:kotlin-stdlib:1.8.10'
-        force 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.10'
-        force 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.10'
-    }
-}
-```
+### Configuración Manual (Solo la primera vez)
+1. Abrir app "API Yape Gratis"
+2. Tap en **"Dar Permisos"**
+3. Activar toggle de acceso
+4. Volver a la app → ✅ "Activo"
 
 ---
 
-## 👨‍💻 Creador
+## 💡 Preguntas Frecuentes - API Yape Gratis
 
-**Pex Creative**  
-Desarrollo de aplicaciones móviles y soluciones tecnológicas
+### ¿Es realmente gratis?
+✅ **Sí, 100% gratuito** y open source. No hay pagos ocultos, límites ni suscripciones.
 
-- 🌐 Web: [https://pex.com.ar/desarrollo-apps/](https://pex.com.ar/desarrollo-apps/)
-- 👤 Desarrollador: Ezequiel Del Vacchio
-- 📱 WhatsApp: [+54 9 11 6920-0232](https://wa.me/5491169200232)
-- 📧 Email: [soporte@pex.com.ar](mailto:soporte@pex.com.ar)
+### ¿Es legal usar esta API Yape?
+✅ Sí, solo lee tus propias notificaciones en tu celular. No hackea ni intercepta datos de terceros.
+
+### ¿Necesito ser empresa para usar esto?
+❌ No. Funciona para **personas naturales, emprendedores y empresas** sin requisitos.
+
+### ¿Funciona con Yape Business?
+✅ Sí, captura notificaciones de **Yape personal y Yape Business**.
+
+### ¿Puedo usarlo con múltiples bancos?
+✅ Sí, soporta **Yape + Mercado Pago + Interbank + BCP** simultáneamente.
+
+### ¿Necesito servidor propio?
+⚠️ Sí, necesitas un servidor con PHP/Node/Python para recibir los webhooks. Puedes usar hosting compartido barato.
+
+### ¿Qué pasa si no tengo internet?
+⚠️ La app almacena temporalmente y reenvía cuando recupera conexión (próxima versión).
+
+---
+
+## 🛠️ Troubleshooting - API Yape
+
+### ❌ No captura notificaciones de Yape
+**Solución:**
+1. Verificar permiso "Acceso a notificaciones" activado
+2. Abrir Yape → Recibir un pago de prueba (S/ 1)
+3. Revisar logs: `Tag: BankNotification`
+
+### ❌ No llegan webhooks a mi servidor
+**Solución:**
+1. Verificar URL correcta en código
+2. Probar URL en navegador
+3. Revisar logs: `Tag: API` → Debe decir "OK 200"
+4. Verificar firewall del servidor
+
+### ❌ App se cierra al abrir
+**Solución:**
+1. `Build → Clean Project`
+2. `Build → Rebuild Project`
+3. Reinstalar APK
+
+---
+
+## 📈 Roadmap - Próximas Funcionalidades
+
+### v1.1 (Próximamente)
+- [ ] **Parseo automático** de montos y nombres
+- [ ] **Cola de reintentos** si falla webhook
+- [ ] **Múltiples webhooks** (enviar a 2+ servidores)
+- [ ] **Filtro por monto mínimo** (ej: solo >S/ 10)
+
+### v1.2 (Planificado)
+- [ ] **Autenticación JWT** en webhooks
+- [ ] **Dashboard web** para ver transacciones
+- [ ] **Notificaciones custom** al recibir pago
+- [ ] **Soporte HTTPS** nativo
+
+---
+
+## 🔍 SEO - Búsquedas Relacionadas
+
+¿Buscas alguna de estas soluciones? **Esta API Yape gratis te sirve:**
+
+✅ api yape peru gratis  
+✅ como crear api yape  
+✅ webhook yape gratuito  
+✅ integrar yape sin costo  
+✅ lector notificaciones yape  
+✅ capturar pagos yape android  
+✅ api mercado pago gratis  
+✅ alternativa yape business  
+✅ sistema pagos yape php  
+✅ yape api python  
+✅ yape api nodejs  
+✅ como automatizar yape  
+
+---
+
+## 👨‍💻 Creador - Desarrollo de APIs Gratis
+
+**Pex Creative** - Expertos en desarrollo de APIs bancarias gratuitas
+
+- 🌐 **Web**: [https://pex.com.ar/desarrollo-apps/](https://pex.com.ar/desarrollo-apps/)
+- 👤 **Developer**: Ezequiel Del Vacchio
+- 📱 **WhatsApp**: [+54 9 11 6920-0232](https://wa.me/5491169200232)
+- 📧 **Email**: [soporte@pex.com.ar](mailto:soporte@pex.com.ar)
+
+### Servicios Relacionados
+- ✅ Integración personalizada API Yape
+- ✅ Desarrollo de webhooks a medida
+- ✅ Consultoría sistemas de pago
+- ✅ Apps Android para fintech
 
 ---
 
 ## 📄 Licencia
 
-Este proyecto es de uso privado. Todos los derechos reservados © 2025 Pex Creative.
+**Open Source** - Uso libre para proyectos personales y comerciales.  
+© 2025 Pex Creative. Algunos derechos reservados.
 
 ---
 
-## 🔄 Historial de Versiones
+## 🌟 Keywords Finales
 
-### v1.0.0 (2025-10-16)
-- ✅ Captura de notificaciones de Yape
-- ✅ Captura de notificaciones de Mercado Pago
-- ✅ Captura de notificaciones de Interbank
-- ✅ Captura de notificaciones de BCP
-- ✅ Envío automático a API externa
-- ✅ Interfaz simple de activación de permisos
+`#APIYapeGratis` `#YapeAPI` `#WebhookYape` `#IntegracionYape` `#APIMercadoPagoGratis` `#YapeGratuito` `#APIBancariaGratis` `#YapeDeveloper` `#NotificacionesYape` `#YapeAutomatico` `#SistemaPagosYape` `#YapeWebhook` `#APIYapePerú` `#YapeOpenSource`
 
 ---
 
-## 🤝 Contribuciones
+**⚡ API Yape 100% Gratis | Hecho con Kotlin y ❤️ por Pex Creative**
 
-Para consultas, mejoras o soporte técnico, contactar a través de los canales oficiales de Pex Creative.
-
----
-
-**⚡ Hecho con Kotlin y ❤️ por Pex Creative**
+**🔗 [Descargar APK](#) | [Ver Código](#) | [Documentación](#) | [Soporte](#)**
